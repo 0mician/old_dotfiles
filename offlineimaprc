@@ -1,0 +1,67 @@
+[general]
+accounts = GmailCL, GmailAS
+autorefresh = 15
+ui = ttyui
+pythonfile=~/dotfiles/offlineimap.py
+
+[Account GmailCL]
+localrepository = GmailCL-Local
+remoterepository = GmailCL-Remote
+
+[Repository GmailCL-Local]
+type = Maildir
+localfolders = ~/Maildir/GmailCL
+maxconnections = 5
+nametrans = lambda folder: re.sub('spam', '[Gmail].Spam',
+                           re.sub('drafts', '[Gmail].Drafts',
+                           re.sub('sent', '[Gmail].Sent Mail',
+                           re.sub('trash', '[Gmail].Trash',
+			   re.sub('archive', '[Gmail].All Mail',
+                           re.sub('inbox', 'INBOX', folder))))))
+
+[Repository GmailCL-Remote]
+type = IMAP
+remotehost = imap.gmail.com
+remoteusereval = get_email("CLG")
+remotepasseval = get_password("CLG")
+ssl = yes
+maxconnections = 5
+realdelete = no
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+nametrans = lambda folder: re.sub('.*Spam$', 'spam',
+                           re.sub('.*Drafts$', 'drafts',
+                           re.sub('.*Sent Mail$', 'sent',
+                           re.sub('.*Trash$', 'trash',
+			   re.sub('.*All Mail$', 'archive',
+                           re.sub('INBOX$', 'inbox', folder))))))
+
+[Account GmailAS]
+localrepository = GmailAS-Local
+remoterepository = GmailAS-Remote
+
+[Repository GmailAS-Local]
+type = Maildir
+localfolders = ~/Maildir/GmailAS
+maxconnections = 5
+nametrans = lambda folder: re.sub('spam', '[Gmail].Spam',
+                           re.sub('drafts', '[Gmail].Drafts',
+                           re.sub('sent', '[Gmail].Sent Mail',
+                           re.sub('trash', '[Gmail].Trash',
+			   re.sub('archive', '[Gmail].All Mail',
+                           re.sub('inbox', 'INBOX', folder))))))
+
+[Repository GmailAS-Remote]
+type = IMAP
+remotehost = imap.gmail.com
+remoteusereval = get_email("ASG")
+remotepasseval = get_password("ASG")
+ssl = yes
+maxconnections = 5
+realdelete = no
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+nametrans = lambda folder: re.sub('.*Spam$', 'spam',
+                           re.sub('.*Drafts$', 'drafts',
+                           re.sub('.*Sent Mail$', 'sent',
+                           re.sub('.*Trash$', 'trash',
+			   re.sub('.*All Mail$', 'archive',
+                           re.sub('INBOX$', 'inbox', folder))))))

@@ -1,0 +1,36 @@
+! Urxvt Settings
+
+! No scrollbar
+URxvt*scrollBar: False
+
+! background color
+URxvt*background: black
+
+! fonts/front color
+URxvt*foreground: AntiqueWhite
+
+! blue
+*color4:  #0148FE
+*color12: #3C32FE
+
+! dimension default (probably should change this)
+URxvt*geometry: 120x40 
+
+! link action
+URxvt.perl-ext-common:  default,matcher,tabbed
+URxvt.urlLauncher:      /usr/bin/firefox
+URxvt.matcher.button:   3
+URxvt.colorUL:          #4682B4
+
+! tabs option
+URxvt.perl-ext-common:  default,tabbed
+
+! Using Xft
+URxvt*font:           xft:inconsolata
+
+!-*-{ Xft settings
+Xft*dpi:              120
+Xft*antialias:        True
+Xft*hinting:          Full
+!-*-}
+S

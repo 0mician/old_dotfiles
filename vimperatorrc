@@ -1,0 +1,3 @@
+" remove navigation toolbar (can't hide anymore in ff29)
+:set gui=nonavigation
+
